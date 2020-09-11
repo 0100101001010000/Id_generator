@@ -10,26 +10,26 @@
 using namespace std;
 
 class Id_generator{
-    const chrono::high_resolution_clock::time_point start_time = chrono::high_resolution_clock::now();
     const int length;
     const static constexpr int default_length = 32;
-    int create_seed() const;
+    static chrono::high_resolution_clock::time_point start_time;
+    static int create_seed();
 
     uniform_int_distribution<>::param_type char_num_param{0, 1};
-    const int alpha_num_seed = create_seed();
+    int alpha_num_seed = create_seed();
     function<int()> char_num = bind(uniform_int_distribution<>{char_num_param}, default_random_engine{alpha_num_seed});
 
     uniform_int_distribution<>::param_type num_param{0, 9};
-    const int num_seed = create_seed();
+    int num_seed = create_seed();
     function<int()> num = bind(uniform_int_distribution<>{num_param}, default_random_engine{num_seed});
 
-    const int case_seed = create_seed();
+    int case_seed = create_seed();
     function<int()> char_case = bind(uniform_int_distribution<>{char_num_param}, default_random_engine{case_seed});
 
     uniform_int_distribution<>::param_type char_param{0, 25};
-    const int upper_char_seed = create_seed();
+    int upper_char_seed = create_seed();
     function<int()> upper_char = bind(uniform_int_distribution<>{char_param}, default_random_engine{upper_char_seed});
-    const int lower_char_seed = create_seed();
+    int lower_char_seed = create_seed();
     function<int()> lower_char = bind(uniform_int_distribution<>{char_param}, default_random_engine{lower_char_seed});
 
     map<int, string> upper_char_map {
@@ -57,7 +57,7 @@ class Id_generator{
             {21,"V"},
             {22,"W"},
             {23,"X"},
-            {23,"Y"},
+            {24,"Y"},
             {25,"Z"},
     };
     map<int, string> lower_char_map {
@@ -85,7 +85,7 @@ class Id_generator{
             {21,"v"},
             {22,"w"},
             {23,"x"},
-            {23,"y"},
+            {24,"y"},
             {25,"z"},
     };
 
