@@ -1,4 +1,4 @@
-# unique_id
+# Id_generator
 A simple static C++ library to generate unique ids.
 
 ### Usage
