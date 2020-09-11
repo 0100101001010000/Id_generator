@@ -19,7 +19,19 @@ void test_determined_len_id() {
     assert(!new_id.empty());
 };
 
+void test_runtime(){
+    chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
+    Id_generator random_id_generator;
+    for (int i = 0; i < 10000; ++i){
+        std::string new_id = random_id_generator();
+    }
+    chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+    auto runtime = chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    assert(runtime < 500);
+}
+
 int main(){
     test_random_id();
     test_determined_len_id();
+    test_runtime();
 }
