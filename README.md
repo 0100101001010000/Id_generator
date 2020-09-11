@@ -1,5 +1,5 @@
 # unique_id
-A simple C++ static library to generate unique ids.
+A simple static C++ library to generate unique ids.
 
 ### Usage
 The default length of a newly generated id will be 32 characters
